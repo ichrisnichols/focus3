@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Focus3.XmlTransforms.Console", "Focus3.XmlTransforms.Console\Focus3.XmlTransforms.Console.csproj", "{B4B5F86D-B95C-420E-BD76-7E2243C2344A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Focus3.Transformer.Console", "Focus3.Transformer.Console\Focus3.Transformer.Console.csproj", "{B4B5F86D-B95C-420E-BD76-7E2243C2344A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Focus3.CsvTransform.CyberScout", "Focus3.CsvTransform.CyberScout\Focus3.CsvTransform.CyberScout.csproj", "{73EC0123-0094-4E2B-8894-14826B660BA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Focus3.CsvTransformer", "Focus3.CsvTransformer\Focus3.CsvTransformer.csproj", "{59DBDFED-81D2-4919-8AEE-66ED3579A83B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Focus3.CsvTransformer.Tests", "Focus3.CsvTransformer.Tests\Focus3.CsvTransformer.Tests.csproj", "{ECFF758F-81D3-4890-AF4C-B0D3F9BCC819}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Focus3.CsvTransformer.NUnit.Tests", "Focus3.CsvTransformer.NUnit.Tests\Focus3.CsvTransformer.NUnit.Tests.csproj", "{5AB7C7C7-E8AF-491C-97E0-42E2CCEA1513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{B4B5F86D-B95C-420E-BD76-7E2243C2344A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4B5F86D-B95C-420E-BD76-7E2243C2344A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4B5F86D-B95C-420E-BD76-7E2243C2344A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73EC0123-0094-4E2B-8894-14826B660BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73EC0123-0094-4E2B-8894-14826B660BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73EC0123-0094-4E2B-8894-14826B660BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73EC0123-0094-4E2B-8894-14826B660BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DBDFED-81D2-4919-8AEE-66ED3579A83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DBDFED-81D2-4919-8AEE-66ED3579A83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DBDFED-81D2-4919-8AEE-66ED3579A83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DBDFED-81D2-4919-8AEE-66ED3579A83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECFF758F-81D3-4890-AF4C-B0D3F9BCC819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECFF758F-81D3-4890-AF4C-B0D3F9BCC819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECFF758F-81D3-4890-AF4C-B0D3F9BCC819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECFF758F-81D3-4890-AF4C-B0D3F9BCC819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB7C7C7-E8AF-491C-97E0-42E2CCEA1513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB7C7C7-E8AF-491C-97E0-42E2CCEA1513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB7C7C7-E8AF-491C-97E0-42E2CCEA1513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB7C7C7-E8AF-491C-97E0-42E2CCEA1513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

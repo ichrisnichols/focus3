@@ -1,0 +1,34 @@
+﻿{
+  // first column is output CSV header column
+  // second column is input XML XPATH, relative to "/Data/Companies/Company"
+  "Company ID": "Identiier",
+  "Company Name": "Name"
+  //"Enrollment" "Type",
+  //"Employee" "SSN",
+  //"Dependent" "SSN",
+  //"Relationship" "External",
+  //"ID" "Sequence",
+  //"Number" "Last",
+  //"Name" "First",
+  //"Name" "Middle",
+  //"Name" "Suffix",
+  //"Date" "of",
+  //"Birth" "Gender",
+  //"Hire" "Date",
+  //"Status" "Termination",
+  //"Date" "Email",
+  //"Phone" "Address",
+  //1 "Address",
+  //2 "City",
+  //"State" "Zip",
+  //"Code" "Carrier",
+  //"Carrier" "Plan",
+  //"Code" "Plan",
+  //"Name" "Coverage",
+  //"Level" "Start",
+  //"Date" "Enrolled",
+  //"On" "End",
+  //"Date" "Employee",
+  //"Cost" "Employer",
+  //"Cost"
+}
