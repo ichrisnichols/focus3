@@ -16,6 +16,13 @@ namespace Focus3.Transformer.Console
                 Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
             XmlConfigurator.Configure(logRepository, new FileInfo("log.config"));
 
+            // TODO: add unit tests for CsvTransformer
+
+            var inputFilePath = "";
+            var csTransform = new CsvTransform.CS.Transform(inputFilePath);
+            var transformer = new CsvTransformer.CsvTransformer(csTransform);
+            transformer.Execute();
+
             System.Console.WriteLine("Hello World!");
             Log.Debug("Hello World Success!");
             System.Console.ReadKey();

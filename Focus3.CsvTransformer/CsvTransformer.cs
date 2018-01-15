@@ -39,7 +39,7 @@ namespace Focus3.CsvTransformer
             }
             catch (Exception e)
             {
-
+                Log.Error(e);
                 throw;
             }
         }

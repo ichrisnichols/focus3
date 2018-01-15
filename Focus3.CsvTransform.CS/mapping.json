@@ -1,7 +1,7 @@
 ﻿{
   // first column is output CSV header column
   // second column is input XML XPATH, relative to "/Data/Companies/Company"
-  "Company ID": "Identiier",
+  "Company ID": "Identifier",
   "Company Name": "Name"
   //"Enrollment" "Type",
   //"Employee" "SSN",

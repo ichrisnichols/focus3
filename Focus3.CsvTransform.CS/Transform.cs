@@ -9,7 +9,7 @@ using Focus3.CsvTransformer;
 using log4net;
 using Newtonsoft.Json;
 
-namespace Focus3.CsvTransform.CyberScout
+namespace Focus3.CsvTransform.CS
 {
     public class Transform : CsvTransformationBase
     {
@@ -76,7 +76,7 @@ namespace Focus3.CsvTransform.CyberScout
 
         protected IEnumerable<Dictionary<string, string>> BuildModelsFromXml(XDocument document)
         {
-            var companyElements = document.Root?.Element("Data")?.Element("Companies")?.Elements("Company").ToList();
+            var companyElements = document.Root?.Element("Companies")?.Elements("Company").ToList();
 
             if (companyElements == null || !companyElements.Any())
             {
@@ -108,20 +108,7 @@ namespace Focus3.CsvTransform.CyberScout
 
         protected string GetElementValue(XElement companyElement, string xpath, string propertyName)
         {
-            var targetElement = companyElement.XPathEvaluate(xpath);
-
-            if (targetElement == null)
-            {
-                // TODO
-                //Log.Debug($"Unable to find [{propertyName}] element for company [{}], employee SSN [{}], dependent SSN [{}].");
-            }
-
-            if (!(targetElement is XElement xElement))
-            {
-                throw new InvalidDataException($"targetElement for property [{propertyName}] is not of type XElement.");
-            }
-
-            return xElement.Value;
+            return companyElement.XPathEvaluate($"string({xpath})") as string;
         }
     }
 }
