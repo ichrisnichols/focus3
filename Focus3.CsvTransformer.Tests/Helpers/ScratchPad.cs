@@ -12,7 +12,7 @@ namespace Focus3.CsvTransformer.Tests.Helpers
     {
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly CsTransform _transform;
+        private readonly CsTransformTestable _transform;
         private readonly string _inputXmlFilePath;
 
         public ScratchPad()
@@ -22,7 +22,7 @@ namespace Focus3.CsvTransformer.Tests.Helpers
             XmlConfigurator.Configure(logRepository, new FileInfo("log.config"));
 
             _inputXmlFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData", "CS_20180111.xml");
-            _transform = new CsTransform(_inputXmlFilePath);
+            _transform = new CsTransformTestable(_inputXmlFilePath);
         }
 
         [Test, Explicit("Test Data Manipulation")]

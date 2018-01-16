@@ -6,9 +6,9 @@ using Focus3.CsvTransform.CS;
 
 namespace Focus3.CsvTransformer.Tests.Helpers
 {
-    public class CsTransform : Transform
+    public class CsTransformTestable : CsTransform
     {
-        public CsTransform(string inputXmlFilePath) : base(inputXmlFilePath)
+        public CsTransformTestable(string inputXmlFilePath) : base(inputXmlFilePath)
         {
         }
 

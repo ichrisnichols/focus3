@@ -19,7 +19,7 @@ namespace Focus3.CsvTransformer.Tests
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        private readonly CsTransform _transform;
+        private readonly CsTransformTestable _transform;
         private readonly XDocument _xDocument;
         private readonly XElement _companyElement;
 
@@ -30,7 +30,7 @@ namespace Focus3.CsvTransformer.Tests
             XmlConfigurator.Configure(logRepository, new FileInfo("log.config"));
 
             var inputXmlFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData", "CS_20180111.xml");
-            _transform = new CsTransform(inputXmlFile);
+            _transform = new CsTransformTestable(inputXmlFile);
 
             _xDocument = _transform.LoadXDocumentTestable(inputXmlFile);
 

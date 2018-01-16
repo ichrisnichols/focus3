@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace Focus3.CsvTransform.CS
 {
-    public class Transform : CsvTransformationBase
+    public class CsTransform : CsvTransformationBase
     {
         private const string CompanyNameElement = "Company Name";
 
@@ -20,7 +20,7 @@ namespace Focus3.CsvTransform.CS
         private readonly string _inputXmlFilePath;
         private readonly Dictionary<string, string> _mapping;
 
-        public Transform(string inputXmlFilePath) : base("CyberScout")
+        public CsTransform(string inputXmlFilePath) : base("CyberScout")
         {
             if (!File.Exists(inputXmlFilePath))
             {
@@ -88,6 +88,8 @@ namespace Focus3.CsvTransform.CS
             foreach (var companyElement in companyElements)
             {
                 var modelDictionary = new Dictionary<string, string>();
+
+                // todo: map only dependents that have been enrolled
 
                 foreach (var map in _mapping)
                 {

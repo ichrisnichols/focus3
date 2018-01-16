@@ -9,7 +9,6 @@ namespace Focus3.CsvTransformer
     {
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private const string DefaultDestPath = @"C:\Focus3\CsvTransformations";
         private const string DefaultDestFileName = "{company}_{date}.csv";
 
         private readonly CsvTransformationBase _transform;
@@ -19,7 +18,7 @@ namespace Focus3.CsvTransformer
             _transform = transform;
         }
 
-        public void Execute(string sourcePath = ".", string destPath = DefaultDestPath)
+        public void Execute(string destPath)
         {
             try
             {
@@ -44,7 +43,7 @@ namespace Focus3.CsvTransformer
             }
         }
 
-        private void GenerateCsv(string filePath, IEnumerable<string> headerColumns, IEnumerable<Dictionary<string, string>> models)
+        protected void GenerateCsv(string filePath, IEnumerable<string> headerColumns, IEnumerable<Dictionary<string, string>> models)
         {
             using (var streamWriter = File.CreateText(filePath))
             {
@@ -63,7 +62,7 @@ namespace Focus3.CsvTransformer
 
         private void CreateDestPath(string destPath)
         {
-            if (Directory.Exists(destPath))
+            if (!Directory.Exists(destPath))
             {
                 Directory.CreateDirectory(destPath);
             }
