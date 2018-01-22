@@ -82,6 +82,7 @@ namespace Focus3.CsvTransform.CS
             return xDocument;
         }
 
+        // currently not used...
         protected IEnumerable<Dictionary<string, string>> BuildModelsFromXml(XDocument document)
         {
             var companyElements = document.Root?.Element("Companies")?.Elements("Company").ToList();
@@ -96,8 +97,6 @@ namespace Focus3.CsvTransform.CS
             foreach (var companyElement in companyElements)
             {
                 var modelDictionary = new Dictionary<string, string>();
-
-                // todo: map only dependents that have been enrolled
 
                 foreach (var map in _mapping)
                 {
