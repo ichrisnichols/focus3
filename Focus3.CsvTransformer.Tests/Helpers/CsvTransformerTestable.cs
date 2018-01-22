@@ -11,7 +11,7 @@ namespace Focus3.CsvTransformer.Tests.Helpers
         }
 
         public void GenerateCsvTestable(string filePath, IEnumerable<string> headerColumns,
-            IEnumerable<Dictionary<string, string>> models)
+            IEnumerable<IDictionary<string, object>> models)
         {
             GenerateCsv(filePath, headerColumns, models);
         }

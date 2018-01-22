@@ -43,7 +43,7 @@ namespace Focus3.CsvTransformer
             }
         }
 
-        protected void GenerateCsv(string filePath, IEnumerable<string> headerColumns, IEnumerable<Dictionary<string, string>> models)
+        protected void GenerateCsv(string filePath, IEnumerable<string> headerColumns, IEnumerable<IDictionary<string, object>> models)
         {
             using (var streamWriter = File.CreateText(filePath))
             {
@@ -54,7 +54,7 @@ namespace Focus3.CsvTransformer
                 {
                     foreach (var headerColumn in headers)
                     {
-                        streamWriter.Write(model[headerColumn] + ',');
+                        streamWriter.Write(model[headerColumn].ToString() + ',');
                     }
                 }
             }

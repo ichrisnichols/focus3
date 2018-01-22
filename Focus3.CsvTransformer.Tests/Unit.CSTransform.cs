@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Focus3.CsvTransformer.Tests
 {
     [TestFixture]
-    public class CsUnit
+    public class CsTransformUnit
     {
         private const string Focus3CompanyName = "Focus 3 Benefits";
         private const string CsCompanyName = "CxHQx";
@@ -23,7 +23,7 @@ namespace Focus3.CsvTransformer.Tests
         private readonly XDocument _xDocument;
         private readonly XElement _companyElement;
 
-        public CsUnit()
+        public CsTransformUnit()
         {
             var logRepository = LogManager.CreateRepository(
                 Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
