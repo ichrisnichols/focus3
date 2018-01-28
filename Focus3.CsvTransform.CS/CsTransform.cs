@@ -33,7 +33,7 @@ namespace Focus3.CsvTransform.CS
 
             Log.Debug("Loading XML -> CSV mapping from mapping.json file.");
 
-            _mapping = LoadMappingFile("mapping.json");
+            _mapping = LoadMappingFile("headerToPropertyMapping.json");
         }
 
         public override IEnumerable<string> LoadHeaderColumns()
@@ -44,8 +44,6 @@ namespace Focus3.CsvTransform.CS
         public override IEnumerable<IDictionary<string, object>> LoadModels()
         {
             var xDocument = LoadXDocument(_inputXmlFilePath);
-
-            //return BuildModelsFromXml(xDocument);
 
             var enrollees = BuildEnrolleeModels(xDocument);
 

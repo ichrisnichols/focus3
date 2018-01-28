@@ -1,12 +1,11 @@
 ﻿{
   // first column is output CSV header column
-  // second column is input XML XPATH, relative to parent node...
-  "Company ID": "Identifier", // ex: full xpath would be... "/Data/Companies/Company/Identifier"
+  // second column is input XML element name
+  "Company ID": "Identifier",
   "Company Name": "Name",
-  // user defined fields at company & employee level (todo)
   "Employee": {
     "External ID": "ExternalEmployeeId",
-    "Employee SSN": "SSN", // ex: full xpath would be... "/Data/Companies/Company/Employees/Employee/SSN"
+    "Employee SSN": "SSN",
     "Last Name": "LastName",
     "First Name": "FirstName",
     "Middle Name": "MiddleName",

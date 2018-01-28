@@ -43,7 +43,7 @@ namespace Focus3.CsvTransformer.Tests
         [Test]
         public void LoadMappingFileTest_Success()
         {
-            var mappingDictionary = _transform.LoadMappingFileTestable("mapping.json");
+            var mappingDictionary = _transform.LoadMappingFileTestable("headerToPropertyMapping.json");
             Assert.IsNotNull(mappingDictionary);
             Assert.That(mappingDictionary.Count > 0);
             Log.Debug($"There were {mappingDictionary.Count} items in the mapping dictionary.");
@@ -65,9 +65,8 @@ namespace Focus3.CsvTransformer.Tests
         {
             var modelList = _transform.LoadModels().ToList();
             Assert.IsNotEmpty(modelList);
-            Assert.That(modelList.Count == 3);
-            Assert.That(modelList.First()["Company Name"] == CsCompanyName);
-            Assert.That(modelList.First()["Company ID"] == CsCompanyId);
+            Assert.That(modelList.Count == 294);
+            Assert.That(modelList.First()["Name"].ToString() == CsCompanyName);
         }
 
         [Test]
@@ -94,7 +93,6 @@ namespace Focus3.CsvTransformer.Tests
             Assert.IsNotEmpty(modelList);
             Assert.That(modelList.Count() == 3);
             Assert.That(modelList.First()["Company Name"] == CsCompanyName);
-            Assert.That(modelList.First()["Company ID"] == CsCompanyId);
         }
     }
 }
