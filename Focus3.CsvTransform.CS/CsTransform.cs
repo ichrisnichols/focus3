@@ -36,9 +36,9 @@ namespace Focus3.CsvTransform.CS
             _mapping = LoadMappingFile("headerToPropertyMapping.json");
         }
 
-        public override IEnumerable<string> LoadHeaderColumns()
+        public override Dictionary<string, string> LoadHeaderColumnMappings()
         {
-            return _mapping.Keys;
+            return _mapping;
         }
 
         public override IEnumerable<IDictionary<string, object>> LoadModels()

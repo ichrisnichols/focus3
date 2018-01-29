@@ -11,7 +11,7 @@ namespace Focus3.CsvTransformer
             CompanyName = companyName;
         }
 
-        public abstract IEnumerable<string> LoadHeaderColumns();
+        public abstract Dictionary<string, string> LoadHeaderColumnMappings();
 
         public abstract IEnumerable<IDictionary<string, object>> LoadModels();
     }

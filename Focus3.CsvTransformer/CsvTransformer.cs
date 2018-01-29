@@ -24,7 +24,7 @@ namespace Focus3.CsvTransformer
             {
                 CreateDestPath(destPath);
 
-                var headerColumns = _transform.LoadHeaderColumns();
+                var headerColumnMappings = _transform.LoadHeaderColumnMappings();
 
                 var models = _transform.LoadModels();
 
@@ -34,7 +34,7 @@ namespace Focus3.CsvTransformer
 
                 var filePath = Path.Combine(destPath, fileName);
 
-                GenerateCsv(filePath, headerColumns, models);
+                GenerateCsvFile(filePath, headerColumnMappings, models);
             }
             catch (Exception e)
             {
@@ -43,19 +43,32 @@ namespace Focus3.CsvTransformer
             }
         }
 
-        protected void GenerateCsv(string filePath, IEnumerable<string> headerColumns, IEnumerable<IDictionary<string, object>> models)
+        protected void GenerateCsvFile(string outputFilePath, Dictionary<string, string> headerColumnMappings, IEnumerable<IDictionary<string, object>> models)
         {
-            using (var streamWriter = File.CreateText(filePath))
+            using (var streamWriter = File.CreateText(outputFilePath))
             {
-                var headers = headerColumns.ToList();
+                var headers = headerColumnMappings.Keys.ToList();
                 streamWriter.WriteLine(string.Join(',', headers));
 
                 foreach (var model in models)
                 {
                     foreach (var headerColumn in headers)
                     {
-                        streamWriter.Write(model[headerColumn].ToString() + ',');
+                        if (!headerColumnMappings.ContainsKey(headerColumn))
+                        {
+                            throw new InvalidDataException($"Cannot find the property key for header column [{headerColumn}].  Please check the column header to property mapping file (ex: headerToPropertyMapping.json)");
+                        }
+                        var propertyKey = headerColumnMappings[headerColumn];
+
+                        if (!model.ContainsKey(propertyKey))
+                        {
+                            Log.Warn($"Unable to find the value for property [{propertyKey}].");
+                            streamWriter.Write(',');
+                            continue;
+                        }
+                        streamWriter.Write(model[propertyKey].ToString() + ',');
                     }
+                    streamWriter.WriteLine();
                 }
             }
         }

@@ -29,15 +29,15 @@ namespace Focus3.CsvTransformer.Tests
                 Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
             XmlConfigurator.Configure(logRepository, new FileInfo("log.config"));
 
-            var inputXmlFile = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData", "CS_20180111.xml");
-            _transform = new CsTransformTestable(inputXmlFile);
+            var inputXmlFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData", "CS_20180111.xml");
+            _transform = new CsTransformTestable(inputXmlFilePath);
 
-            _xDocument = _transform.LoadXDocumentTestable(inputXmlFile);
+            _xDocument = _transform.LoadXDocumentTestable(inputXmlFilePath);
 
-            _companyElement = _transform.LoadXDocumentTestable(inputXmlFile).Root?.Descendants("Company")
+            _companyElement = _transform.LoadXDocumentTestable(inputXmlFilePath).Root?.Descendants("Company")
                 .First(c => c.Element("Name")?.Value == Focus3CompanyName);
 
-            Assert.IsNotNull(_companyElement, $"Unable to load Focus3 company element from test file [{inputXmlFile}].");
+            Assert.IsNotNull(_companyElement, $"Unable to load Focus3 company element from test file [{inputXmlFilePath}].");
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace Focus3.CsvTransformer.Tests
         [Test]
         public void LoadHeaderColumnsTest_Success()
         {
-            var columns = _transform.LoadHeaderColumns();
+            var columns = _transform.LoadHeaderColumnMappings();
             Assert.IsNotNull(columns);
             var columnList = columns.ToList();
             Assert.IsNotEmpty(columnList);
