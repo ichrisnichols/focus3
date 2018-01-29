@@ -22,8 +22,9 @@ namespace Focus3.Transformer.Console
 
             try
             {
-                // TODO: add unit tests for CsvTransformer
-                // TODO: alter data structure to be one record per employee
+                Log.Debug("Starting execution...");
+                var logDir = Path.Combine(Environment.CurrentDirectory, "app.log");
+                Log.Debug($"Note that the full log can be found at the follow location [{logDir}].");
 
                 // get user input...
                 string inputFilePath;
@@ -89,7 +90,9 @@ namespace Focus3.Transformer.Console
             }
             catch (Exception e)
             {
+                Log.Error("There was an error during the transformation.  See the following exception...");
                 Log.Error(e);
+                System.Console.ReadKey();
             }
         }
     }

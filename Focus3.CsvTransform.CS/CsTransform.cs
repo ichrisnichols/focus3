@@ -31,9 +31,9 @@ namespace Focus3.CsvTransform.CS
 
             _inputXmlFilePath = inputXmlFilePath;
 
-            Log.Debug("Loading XML -> CSV mapping from mapping.json file.");
-
-            _mapping = LoadMappingFile("headerToPropertyMapping.json");
+            const string mappingFileName = "headerToPropertyMapping.json";
+            Log.Info($"Loading column header to entity property mapping file [{mappingFileName}].");
+            _mapping = LoadMappingFile(mappingFileName);
         }
 
         public override Dictionary<string, string> LoadHeaderColumnMappings()
@@ -52,8 +52,19 @@ namespace Focus3.CsvTransform.CS
             return models;
         }
 
-        protected Dictionary<string, string> LoadMappingFile(string filePath)
+        protected Dictionary<string, string> LoadMappingFile(string filename)
         {
+            string filePath = filename;
+            if (!File.Exists(filePath))
+            {
+                var assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                filePath = Path.Combine(assemblyDir, filename);
+                if (!File.Exists(filePath))
+                {
+                    throw new IOException($"Cannot find mapping file [{filename}].");
+                }
+            }
+
             var mappingStr = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(mappingStr);
         }
@@ -122,25 +133,25 @@ namespace Focus3.CsvTransform.CS
                 throw new InvalidDataException($"The input file at [{_inputXmlFilePath}] does not contain any 'Company' elements.");
             }
 
-            var enrollees = new List<Enrollee>();
+            var enrolleesAll = new List<Enrollee>();
 
             foreach (var companyElement in companyElements)
             {
                 var company = MapCompany(companyElement);
-                Log.Debug($"Building model for company [{company.Name}]...");
+                Log.Info($"Building model for company [{company.Name}]...");
 
-                // todo...could this cause a null ref exception?  use xpath?
-                var employeeElements = document.Root?.Element("Companies")?.Elements("Company").Elements("Employees").Elements("Employee").ToList();
+                var employeeElements = companyElement.Element("Employees")?.Elements("Employee").ToList();
 
                 if (employeeElements == null || !employeeElements.Any())
                 {
-                    throw new InvalidDataException($"The input file at [{_inputXmlFilePath}] does not contain any 'Employee' elements.");
+                    throw new InvalidDataException($"The input file at [{_inputXmlFilePath}] does not contain any 'Employee' elements for company [{company.Name}].");
                 }
 
+                var enrolleesCompany = new List<Enrollee>();
                 foreach (var employeeElement in employeeElements)
                 {
                     var employee = MapEmployee(employeeElement, company);
-                    enrollees.Add(employee);
+                    enrolleesCompany.Add(employee);
 
                     var dependentElements =
                         (employeeElement.Element("Dependents")?.Elements("Dependent") ?? new List<XElement>()).ToList();
@@ -166,19 +177,19 @@ namespace Focus3.CsvTransform.CS
 
                         if (enrolled)
                         {
-                            enrollees.Add(MapDependent(dependentElement, company, employee));
+                            enrolleesCompany.Add(MapDependent(dependentElement, company, employee));
                         }
                         else
                         {
-                            Log.Debug(
-                                $"The dependent with SequenceNumber [{sequenceNum}] for employee with ID [{employee.EmployeeId}] does not have a matching DependentEnrollees/Enrollee element, so will not be added to the output file.");
+                            Log.Debug($"The dependent with SequenceNumber [{sequenceNum}] for employee with ID [{employee.EmployeeId}] does not have a matching DependentEnrollees/Enrollee element, so will not be added to the output file.");
                         }
                     }
                 }
-                Log.Debug(
-                    $"[{enrollees.Count}] enrollees have been added for company [{company.Name}], consisting of [{enrollees.Count(e => e is Employee)}] employees and [{enrollees.Count(e => e is Dependent)}] dependents.");
+                enrolleesAll.AddRange(enrolleesCompany);
+                Log.Info($"[{enrolleesCompany.Count}] enrollees have been added for company [{company.Name}], consisting of [{enrolleesCompany.Count(e => e is Employee)}] employees and [{enrolleesCompany.Count(e => e is Dependent)}] dependents.");
             }
-            return enrollees;
+            Log.Info($"[{enrolleesAll.Count}] total enrollees have been added, consisting of [{enrolleesAll.Count(e => e is Employee)}] employees and [{enrolleesAll.Count(e => e is Dependent)}] dependents.");
+            return enrolleesAll;
         }
 
         protected Company MapCompany(XElement companyElement)

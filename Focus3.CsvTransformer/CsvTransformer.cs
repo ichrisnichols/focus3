@@ -30,7 +30,7 @@ namespace Focus3.CsvTransformer
 
                 var fileName = DefaultDestFileName
                     .Replace("{company}", _transform.CompanyName)
-                    .Replace("{date}", DateTime.Now.ToShortDateString());
+                    .Replace("{date}", DateTime.Now.ToString("yyyyMMdd"));
 
                 var filePath = Path.Combine(destPath, fileName);
 
@@ -62,11 +62,13 @@ namespace Focus3.CsvTransformer
 
                         if (!model.ContainsKey(propertyKey))
                         {
-                            Log.Warn($"Unable to find the value for property [{propertyKey}].");
+                            //Log.Debug($"Unable to find the value for property [{propertyKey}].");
                             streamWriter.Write(',');
                             continue;
                         }
-                        streamWriter.Write(model[propertyKey].ToString() + ',');
+
+                        var valueObject = model[propertyKey] ?? string.Empty;
+                        streamWriter.Write(valueObject.ToString() + ',');
                     }
                     streamWriter.WriteLine();
                 }

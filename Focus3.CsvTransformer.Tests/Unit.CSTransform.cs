@@ -65,7 +65,7 @@ namespace Focus3.CsvTransformer.Tests
         {
             var modelList = _transform.LoadModels().ToList();
             Assert.IsNotEmpty(modelList);
-            Assert.That(modelList.Count == 294);
+            Assert.That(modelList.Count == 98);
             Assert.That(modelList.First()["Name"].ToString() == CsCompanyName);
         }
 
