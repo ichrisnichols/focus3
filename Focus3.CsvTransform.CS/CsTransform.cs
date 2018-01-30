@@ -277,31 +277,31 @@ namespace Focus3.CsvTransform.CS
                 Address2 = element.Element("Address2")?.Value,
                 City = element.Element("City")?.Value,
                 State = element.Element("State")?.Value,
-                Zip = element.Element("Zip")?.Value
+                Zip = element.Element("ZIP")?.Value
             };
         }
 
-        protected DateTime? ParseDate(XElement dateElement)
+        protected string ParseDate(XElement dateElement)
         {
             var strDateValue = dateElement?.Value;
 
             if (!string.IsNullOrWhiteSpace(strDateValue) &&
                 DateTime.TryParse(strDateValue, out var dateTime))
             {
-                return dateTime;
+                return dateTime.ToString("MM/dd/yyyy");
             }
 
             return null;
         }
 
-        protected decimal? ParseDecimal(XElement decimalElement)
+        protected string ParseDecimal(XElement decimalElement)
         {
             var strDecValue = decimalElement?.Value;
 
             if (!string.IsNullOrWhiteSpace(strDecValue) &&
                 decimal.TryParse(strDecValue, out var decimalValue))
             {
-                return decimalValue;
+                return string.Format("{0:C2}", decimalValue);
             }
 
             return null;

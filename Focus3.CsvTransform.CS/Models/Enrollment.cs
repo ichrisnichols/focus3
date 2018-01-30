@@ -11,10 +11,10 @@ namespace Focus3.CsvTransform.CS.Models
         public string CarrierPlanCode { get; set; }
         public string PlanName { get; set; }
         public string CoverageLevel { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EnrolledOn { get; set; }
-        public DateTime? EndDate { get; set; }
-        public decimal? EmployeeCost { get; set; }
-        public decimal? EmployerCost { get; set; }
+        public string StartDate { get; set; }
+        public string EnrolledOn { get; set; }
+        public string EndDate { get; set; }
+        public string EmployeeCost { get; set; }
+        public string EmployerCost { get; set; }
     }
 }

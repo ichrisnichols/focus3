@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Focus3.CsvTransformer;
 
 namespace Focus3.CsvTransform.CS.Models
 {
-    public class Enrollee
+    public class Enrollee : IEnrollee
     {
         public Company Company { get; set; }
         public string EmployeeSsn { get; set; }
@@ -15,9 +16,9 @@ namespace Focus3.CsvTransform.CS.Models
 
     public class Employee : Enrollee
     {
-        public DateTime? HireDate { get; set; }
+        public string HireDate { get; set; }
         public string Status { get; set; }
-        public DateTime? TermDate { get; set; }
+        public string TermDate { get; set; }
         public Enrollment Enrollment { get; set; }
     }
 
@@ -34,7 +35,7 @@ namespace Focus3.CsvTransform.CS.Models
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string Suffix { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public string BirthDate { get; set; }
         public string Gender { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

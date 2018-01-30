@@ -39,8 +39,8 @@ namespace Focus3.CsvTransformer.Tests
                 Company = new Company {Id = companyId, Name = companyName},
                 EmployeeId = employeeId,
                 EmployeeSsn = employeeSsn,
-                HireDate = DateTime.Today,
-                TermDate = DateTime.MaxValue,
+                HireDate = DateTime.Today.ToShortDateString(),
+                TermDate = DateTime.MaxValue.ToShortDateString(),
                 Status = status,
                 CommonPersonalData = new CommonPersonalData {FirstName = fName, LastName = lName, Email = email},
                 Enrollment = new Enrollment { Carrier = carrier, PlanName = planName, EnrollmentType = enrollType}
@@ -50,8 +50,8 @@ namespace Focus3.CsvTransformer.Tests
 
             Assert.IsNotNull(dictionary);
             Assert.That(dictionary.Keys.Count > 0);
-            Assert.That((DateTime)dictionary["HireDate"] == DateTime.Today);
-            Assert.That((DateTime)dictionary["TermDate"] == DateTime.MaxValue);
+            Assert.That((string)dictionary["HireDate"] == DateTime.Today.ToShortDateString());
+            Assert.That((string)dictionary["TermDate"] == DateTime.MaxValue.ToShortDateString());
             Assert.That((string)dictionary["EmployeeId"] == employeeId);
             Assert.That((string)dictionary["EmployeeSsn"] == employeeSsn);
             Assert.That((string)dictionary["Status"] == status);

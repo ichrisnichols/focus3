@@ -18,7 +18,7 @@ namespace Focus3.CsvTransformer
             _transform = transform;
         }
 
-        public void Execute(string destPath)
+        public string Execute(string destPath)
         {
             try
             {
@@ -35,6 +35,8 @@ namespace Focus3.CsvTransformer
                 var filePath = Path.Combine(destPath, fileName);
 
                 GenerateCsvFile(filePath, headerColumnMappings, models);
+
+                return Path.Combine(destPath, fileName);
             }
             catch (Exception e)
             {

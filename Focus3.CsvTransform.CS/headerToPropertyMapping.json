@@ -12,7 +12,7 @@
   "Last Name": "LastName",
   "First Name": "FirstName",
   "Middle Name": "MiddleName",
-  "Suffix": "Suffix", // blank
+  "Suffix": "Suffix",
   "Date of Birth": "BirthDate",
   "Gender": "Gender",
   "Hire Date": "HireDate",
