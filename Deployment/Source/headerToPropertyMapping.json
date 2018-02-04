@@ -1,0 +1,37 @@
+﻿{
+  // first column is output CSV header column
+  // second column is input XML element name
+  "Company ID": "Id",
+  "Company Name": "Name",
+  "Enrollment Type": "EnrollmentType",
+  "Employee SSN": "EmployeeSsn",
+  "Dependent SSN": "Ssn",
+  "Relationship": "Relationship",
+  "External ID": "EmployeeId",
+  "Sequence Number": "SequenceNum",
+  "Last Name": "LastName",
+  "First Name": "FirstName",
+  "Middle Name": "MiddleName",
+  "Suffix": "Suffix",
+  "Date of Birth": "BirthDate",
+  "Gender": "Gender",
+  "Hire Date": "HireDate",
+  "Status": "Status",
+  "Termination Date": "TermDate",
+  "Email": "Email",
+  "Phone": "Phone",
+  "Address 1": "Address1",
+  "Address 2": "Address2",
+  "City": "City",
+  "State": "State",
+  "Zip Code": "Zip",
+  "Carrier": "Carrier", // hardcode to "Cyber Scout"
+  "Carrier Plan Code": "CarrierPlanCode",
+  "Plan Name": "PlanName",
+  "Coverage Level": "CoverageLevel",
+  "Start Date": "StartDate",
+  "Enrolled On": "EnrolledOn",
+  "End Date": "EndDate",
+  "Employee Cost": "EmployeeCost",
+  "Employer Cost": "EmployerCost"
+}
