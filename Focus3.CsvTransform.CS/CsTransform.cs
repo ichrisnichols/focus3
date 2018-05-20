@@ -144,7 +144,8 @@ namespace Focus3.CsvTransform.CS
 
                 if (employeeElements == null || !employeeElements.Any())
                 {
-                    throw new InvalidDataException($"The input file at [{_inputXmlFilePath}] does not contain any 'Employee' elements for company [{company.Name}].");
+                    Log.Warn($"The input file at [{_inputXmlFilePath}] does not contain any 'Employee' elements for company [{company.Name}].");
+                    continue;
                 }
 
                 var enrolleesCompany = new List<Enrollee>();

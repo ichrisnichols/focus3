@@ -91,7 +91,7 @@ namespace Focus3.CsvTransformer.Tests
             var modelList = _transform.BuildModelsFromXmlTestable(_xDocument).ToList();
 
             Assert.IsNotEmpty(modelList);
-            Assert.That(modelList.Count() == 3);
+            Assert.That(modelList.Count() == 4);
             Assert.That(modelList.First()["Company Name"] == CsCompanyName);
         }
     }

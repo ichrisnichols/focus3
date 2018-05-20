@@ -9801,5 +9801,76 @@
         </Employee>
       </Employees>
     </Company>
+    <Company>
+      <Identifier>10002</Identifier>
+      <Name>EmployeelessCompany</Name>
+      <TaxID />
+      <Address1>123 Main Street</Address1>
+      <Address2 />
+      <City>Roanoke</City>
+      <State>VA</State>
+      <ZIP>24153</ZIP>
+      <SitusState>VA</SitusState>
+      <VoiceNumber />
+      <Contacts>
+        <Contact>
+          <Name>Sarah Smith</Name>
+          <Phone>(882) 509-8449</Phone>
+          <Email>517684@email.com</Email>
+        </Contact>
+      </Contacts>
+      <Classes>
+        <Class>
+          <Name>Default</Name>
+        </Class>
+        <Class>
+          <Name>Full Time</Name>
+        </Class>
+        <Class>
+          <Name>Manager</Name>
+        </Class>
+      </Classes>
+      <Departments />
+      <Divisions />
+      <Offices />
+      <BusinessUnits />
+      <PayrollGroups>
+        <PayrollGroup>
+          <Name>BI WEEKLY</Name>
+          <PayFrequency>26</PayFrequency>
+        </PayrollGroup>
+        <PayrollGroup>
+          <Name>School</Name>
+          <PayFrequency>35</PayFrequency>
+        </PayrollGroup>
+        <PayrollGroup>
+          <Name>WEEKLY</Name>
+          <PayFrequency>52</PayFrequency>
+        </PayrollGroup>
+      </PayrollGroups>
+      <Plans>
+        <Plan>
+          <CompanyIdentifier>10001</CompanyIdentifier>
+          <Carrier>Cyberious</Carrier>
+          <PlanName>Cyberious Test</PlanName>
+          <Benefit>Identity Protection</Benefit>
+          <Type>Identity Protection</Type>
+          <StartDate>2017-01-01T00:00:00</StartDate>
+          <EndDate>2017-12-31T00:00:00</EndDate>
+          <CarrierPlanCode />
+          <CarrierPlanTypeCode />
+          <CarrierPlanTypeSpouseCode />
+          <CarrierPlanTypeChildCode />
+          <PolicyNumber />
+          <IsIssueAgePlan>false</IsIssueAgePlan>
+          <IsPostTax>false</IsPostTax>
+          <PlanMapping />
+          <IsSelfBill xsi:nil="true" />
+          <IsSelfFunded>false</IsSelfFunded>
+          <PlanIdentifier>924834ad-cfa4-4074-84bf-333ef1dbdc51</PlanIdentifier>
+          <SitusState>VA</SitusState>
+        </Plan>
+      </Plans>
+    </Company>
   </Companies>
 </Data>
