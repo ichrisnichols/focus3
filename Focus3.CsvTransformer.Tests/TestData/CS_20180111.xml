@@ -9799,6 +9799,119 @@
           <EmployeeMapping />
           <AnnualBenefitSalaryEffectiveDate xsi:nil="true" />
         </Employee>
+        <Employee>
+          <!-- Has Empty "Enrollments" Node -->
+          <ExternalEmployeeId>291077</ExternalEmployeeId>
+          <CompanyIdentifier>10001</CompanyIdentifier>
+          <SSN>144773756</SSN>
+          <FirstName>Jack</FirstName>
+          <MiddleName>The</MiddleName>
+          <LastName>Ripper</LastName>
+          <Gender>M</Gender>
+          <DOB>1979-09-06T00:00:00</DOB>
+          <MaritalStatus />
+          <Address1>180 Garcia Road</Address1>
+          <Address2 />
+          <City>Richmond</City>
+          <State>VA</State>
+          <County>Bedford County</County>
+          <ZIP>23230</ZIP>
+          <Country>US</Country>
+          <Email>325644@email.com</Email>
+          <Phone />
+          <PhoneExtension xsi:nil="true" />
+          <HireDate>2017-04-24T00:00:00</HireDate>
+          <HiredOn>2017-04-26T00:00:00</HiredOn>
+          <OriginalHireDate xsi:nil="true" />
+          <Salary>52000.00</Salary>
+          <SalaryEffectiveDate>2017-04-24T00:00:00</SalaryEffectiveDate>
+          <LastSalaryReviewDate xsi:nil="true" />
+          <PayFrequency>26</PayFrequency>
+          <WeeklyHours>40</WeeklyHours>
+          <EmploymentStatus>Active</EmploymentStatus>
+          <LeaveStart xsi:nil="true" />
+          <LeaveEnd xsi:nil="true" />
+          <JobTitle>Teste</JobTitle>
+          <RetiredDate xsi:nil="true" />
+          <TerminationDate xsi:nil="true" />
+          <TerminatedOn xsi:nil="true" />
+          <Class>Full Time</Class>
+          <PayrollGroup>BI WEEKLY</PayrollGroup>
+          <Disabled xsi:nil="true" />
+          <TobaccoUser xsi:nil="true" />
+          <TobaccoSignatureDate xsi:nil="true" />
+          <USCitizen xsi:nil="true" />
+          <DisabledStartDate xsi:nil="true" />
+          <DisabledEndDate xsi:nil="true" />
+          <ClassEffectiveDate xsi:nil="true" />
+          <Created>2017-04-26T08:50:45.74</Created>
+          <DemographicLastModified>2017-05-25T09:31:16.85</DemographicLastModified>
+          <HrisComplete>true</HrisComplete>
+          <Dependents />
+          <Enrollments />
+          <CobraEnrollments />
+          <FutureSalaries />
+          <MappedClassification>10001</MappedClassification>
+          <AnnualBenefitSalary xsi:nil="true" />
+          <EmployeeMapping />
+          <AnnualBenefitSalaryEffectiveDate xsi:nil="true" />
+        </Employee>
+        <Employee>
+          <!-- Missing Enrollments Node -->
+          <ExternalEmployeeId>291607</ExternalEmployeeId>
+          <CompanyIdentifier>10001</CompanyIdentifier>
+          <SSN>193473756</SSN>
+          <FirstName>Pumpkin</FirstName>
+          <MiddleName />
+          <LastName>Pellissippi</LastName>
+          <Gender>M</Gender>
+          <DOB>1979-1-18T00:00:00</DOB>
+          <MaritalStatus />
+          <Address1>180 Garcia Road</Address1>
+          <Address2 />
+          <City>Richmond</City>
+          <State>VA</State>
+          <County>Bedford County</County>
+          <ZIP>23230</ZIP>
+          <Country>US</Country>
+          <Email>333223@email.com</Email>
+          <Phone />
+          <PhoneExtension xsi:nil="true" />
+          <HireDate>2017-04-24T00:00:00</HireDate>
+          <HiredOn>2017-04-26T00:00:00</HiredOn>
+          <OriginalHireDate xsi:nil="true" />
+          <Salary>52000.00</Salary>
+          <SalaryEffectiveDate>2017-04-24T00:00:00</SalaryEffectiveDate>
+          <LastSalaryReviewDate xsi:nil="true" />
+          <PayFrequency>26</PayFrequency>
+          <WeeklyHours>40</WeeklyHours>
+          <EmploymentStatus>Active</EmploymentStatus>
+          <LeaveStart xsi:nil="true" />
+          <LeaveEnd xsi:nil="true" />
+          <JobTitle>Teste</JobTitle>
+          <RetiredDate xsi:nil="true" />
+          <TerminationDate xsi:nil="true" />
+          <TerminatedOn xsi:nil="true" />
+          <Class>Full Time</Class>
+          <PayrollGroup>BI WEEKLY</PayrollGroup>
+          <Disabled xsi:nil="true" />
+          <TobaccoUser xsi:nil="true" />
+          <TobaccoSignatureDate xsi:nil="true" />
+          <USCitizen xsi:nil="true" />
+          <DisabledStartDate xsi:nil="true" />
+          <DisabledEndDate xsi:nil="true" />
+          <ClassEffectiveDate xsi:nil="true" />
+          <Created>2017-04-26T08:50:45.74</Created>
+          <DemographicLastModified>2017-05-25T09:31:16.85</DemographicLastModified>
+          <HrisComplete>true</HrisComplete>
+          <Dependents />
+          <CobraEnrollments />
+          <FutureSalaries />
+          <MappedClassification>10001</MappedClassification>
+          <AnnualBenefitSalary xsi:nil="true" />
+          <EmployeeMapping />
+          <AnnualBenefitSalaryEffectiveDate xsi:nil="true" />
+        </Employee>
       </Employees>
     </Company>
     <Company>

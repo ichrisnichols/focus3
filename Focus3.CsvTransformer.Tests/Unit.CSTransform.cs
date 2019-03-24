@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
@@ -13,6 +12,8 @@ namespace Focus3.CsvTransformer.Tests
     [TestFixture]
     public class CsTransformUnit
     {
+        // TODO: Make more performant + load test...loading entire XML doc into memory at once could overflow RAM
+
         private const string Focus3CompanyName = "Focus 3 Benefits";
         private const string CsCompanyName = "CxHQx";
         private const string CsCompanyId = "1xx4";
@@ -30,6 +31,8 @@ namespace Focus3.CsvTransformer.Tests
             XmlConfigurator.Configure(logRepository, new FileInfo("log.config"));
 
             var inputXmlFilePath = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestData", "CS_20180111.xml");
+            //var inputXmlFilePath = @"C:\temp\Focus3\Cyber_Scout_20190305_202706_84949.xml";
+            
             _transform = new CsTransformTestable(inputXmlFilePath);
 
             _xDocument = _transform.LoadXDocumentTestable(inputXmlFilePath);
@@ -61,12 +64,14 @@ namespace Focus3.CsvTransformer.Tests
         }
 
         [Test]
-        public void LoadModelsTest_Success()
+        public void ExtractEnrolleeDictionariesTest_Success()
         {
-            var modelList = _transform.LoadModels().ToList();
-            Assert.IsNotEmpty(modelList);
-            Assert.That(modelList.Count == 98);
-            Assert.That(modelList.First()["Name"].ToString() == CsCompanyName);
+            var enrollees = _transform.ExtractEnrolleeDictionaries().ToList();
+            Assert.IsNotEmpty(enrollees);
+            Assert.That(enrollees.Count == 98);
+            Assert.That(enrollees.First()["Name"].ToString() == CsCompanyName);
+
+            Log.Info($"Total number of employees with empty <Enrollments/> element: {_transform.EmptyEnrollmentEmployeeCount}.");
         }
 
         [Test]

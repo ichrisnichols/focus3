@@ -26,7 +26,7 @@ namespace Focus3.CsvTransformer
 
                 var headerColumnMappings = _transform.LoadHeaderColumnMappings();
 
-                var models = _transform.LoadModels();
+                var models = _transform.ExtractEnrolleeDictionaries();
 
                 var fileName = DefaultDestFileName
                     .Replace("{company}", _transform.CompanyName)

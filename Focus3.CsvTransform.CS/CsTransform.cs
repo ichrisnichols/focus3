@@ -15,6 +15,16 @@ namespace Focus3.CsvTransform.CS
 {
     public class CsTransform : CsvTransformationBase
     {
+        /*
+         * Test counter for counting the number of employees with an empty Enrollments element
+         */
+        private int _emptyEnrollmentCount = 0;
+
+        public int EmptyEnrollmentEmployeeCount
+        {
+            get { return _emptyEnrollmentCount; }
+        }
+
         private const string CompanyNameElement = "Company Name";
 
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
@@ -41,7 +51,7 @@ namespace Focus3.CsvTransform.CS
             return _mapping;
         }
 
-        public override IEnumerable<IDictionary<string, object>> LoadModels()
+        public override IEnumerable<IDictionary<string, object>> ExtractEnrolleeDictionaries()
         {
             var xDocument = LoadXDocument(_inputXmlFilePath);
 
@@ -152,6 +162,12 @@ namespace Focus3.CsvTransform.CS
                 foreach (var employeeElement in employeeElements)
                 {
                     var employee = MapEmployee(employeeElement, company);
+
+                    if (employee == null)
+                    {
+                        continue;
+                    }
+                        
                     enrolleesCompany.Add(employee);
 
                     var dependentElements =
@@ -204,22 +220,37 @@ namespace Focus3.CsvTransform.CS
 
         protected Employee MapEmployee(XElement employeeElement, Company company)
         {
+            var employeeId = employeeElement.Element("ExternalEmployeeId")?.Value;
+            var enrollmentElement = employeeElement.Element("Enrollments")?.Elements("Enrollment").FirstOrDefault();
+
+            if (enrollmentElement == null)
+            {
+                _emptyEnrollmentCount++;
+                Log.Warn($"No enrollments found for Employee ID: {employeeId} from Company ID: {company.Id}.");
+                return null;
+            }
+
             return new Employee
             {
                 Company = company,
                 Address = MapAddress(employeeElement),
                 CommonPersonalData = MapCommonData(employeeElement),
-                EmployeeId = employeeElement.Element("ExternalEmployeeId")?.Value,
+                EmployeeId = employeeId,
                 EmployeeSsn = employeeElement.Element("SSN")?.Value,
                 HireDate = ParseDate(employeeElement.Element("HireDate")),
                 Status = employeeElement.Element("EmploymentStatus")?.Value,
                 TermDate = ParseDate(employeeElement.Element("TerminationDate")),
-                Enrollment = MapEnrollment(employeeElement.Element("Enrollments")?.Elements("Enrollment").FirstOrDefault())
+                Enrollment = MapEnrollment(enrollmentElement)
             };
         }
 
         protected Dependent MapDependent(XElement dependentElement, Company company, Employee employee)
         {
+            if (dependentElement == null || !dependentElement.HasElements)
+            {
+                throw new ArgumentException($"Cannot map dependent for empty or null XElement for EmployeeID: {employee.EmployeeId}.");
+            }
+
             return new Dependent
             {
                 Ssn = dependentElement.Element("SSN")?.Value,
@@ -235,6 +266,11 @@ namespace Focus3.CsvTransform.CS
 
         protected Enrollment MapEnrollment(XElement enrollmentElement)
         {
+            if (enrollmentElement == null || !enrollmentElement.HasElements)
+            {
+                throw new ArgumentException("Cannot map enrollment for empty or null XElement");
+            }
+
             return new Enrollment
             {
                 Carrier = CompanyName,
@@ -252,6 +288,11 @@ namespace Focus3.CsvTransform.CS
 
         protected CommonPersonalData MapCommonData(XElement element)
         {
+            if (element == null || !element.HasElements)
+            {
+                throw new ArgumentException("Cannot map Common Personal Data for empty or null XElement");
+            }
+
             return new CommonPersonalData
             {
                 LastName = element.Element("LastName")?.Value,
@@ -302,7 +343,7 @@ namespace Focus3.CsvTransform.CS
             if (!string.IsNullOrWhiteSpace(strDecValue) &&
                 decimal.TryParse(strDecValue, out var decimalValue))
             {
-                return string.Format("{0:C2}", decimalValue);
+                return $"{decimalValue:C2}";
             }
 
             return null;

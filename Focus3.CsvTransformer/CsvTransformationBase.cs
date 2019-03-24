@@ -13,6 +13,6 @@ namespace Focus3.CsvTransformer
 
         public abstract Dictionary<string, string> LoadHeaderColumnMappings();
 
-        public abstract IEnumerable<IDictionary<string, object>> LoadModels();
+        public abstract IEnumerable<IDictionary<string, object>> ExtractEnrolleeDictionaries();
     }
 }
